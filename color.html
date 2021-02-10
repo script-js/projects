@@ -1,0 +1,93 @@
+<html>
+  <head>
+     <title> </title>
+  </head>
+  <body>
+     <div id ='tv'>
+       <input type='text' id='inp' class="styleR" >
+	<hr/>
+        <div id ='feed' class="styleR"></div>
+     <button id='btn' >click me</button>
+     </div>
+     
+     
+     <hr id='vtc'/>
+     
+     <style>
+	#tv{
+	   width:25%;
+	   height:30%;
+	   border:30px ridge rgba(255,255,255,0.1);
+	   padding:10px;
+	   border-radius:10px;
+	   margin:10px 35% 10px 35%;
+	 }
+	.styleR{
+	  width:75%;
+	  height:30%;
+	  text-align:center;
+	  background:rgba(0,102,255,0.1);
+	  color:white;
+	  font-weight:bold;
+	  border:none;
+	  margin:0px 15% 0px 15%;
+	}
+	
+	#btn{
+	  width:30%;
+	  height:25%;
+	  border:2px dotted rgba(255,255,255,0.8);;
+	  margin:5px 100px 10px 100px;
+	  display:block;
+	  background:rgba(0,102,255,0.5);
+	}
+    </style>
+     <script>
+	var btn= document.getElementById('btn');
+	var feedback=document.getElementById('feed');
+	var inp=document.getElementById('inp');
+	var show=document.getElementById('tv');
+	var alpha=['a', 'b', 'c', 'd', 'e', 'f'];
+	var arr=['','',''];
+	var result='#', proc=0, dep=0;
+	inp.value='#';
+	function change(){
+	  arr[0]='#',arr[1]='#', arr[2]='#';
+	  
+          if(inp.value.length == 1){
+	     for(k=0; k < 6; ++k){
+	       arr[0]+=Math.floor(Math.random() * 9);
+	       proc=Math.floor(Math.random() * alpha.length);
+	       arr[1]+=alpha[proc];
+	     }for(i=0; i < 3; ++i){
+	       arr[2]+=Math.floor(Math.random() * 10);
+	       proc=Math.floor(Math.random() * alpha.length);
+	       arr[2]+=alpha[proc];
+	     }
+	     dep=Math.floor(Math.random() * arr.length);
+	     result=arr[dep];
+	     console.log(result)
+	     show.style.backgroundColor=result;
+	     feedback.textContent=result;		
+	     setTimeout('change()', 40000);
+	  }else if(inp.value.length != 7){
+		feedback.textContent='error parsing hex';
+		inp.value='#';
+	  } 
+	  if(inp.value.length == 7){
+	     result=inp.value;
+	     show.style.backgroundColor=result;
+	     feedback.textContent=result;
+	     inp.value='#';
+	      result='#';
+	  }
+	   
+       }
+      btn.addEventListener('click', change);
+	/*project completed within two weeks started on the 5th of jan 2021 ended on the 13 of
+	  january*/
+	//add a functionality where there will not be only a number and a letter in the hex code
+	// but also  an hex with just a number or a letter e.g #ffffff, #000000
+    </script>
+    </body>
+    </html>

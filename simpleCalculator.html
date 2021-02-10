@@ -1,0 +1,111 @@
+<html>
+  
+ <head>
+ 
+   <title>a simple calculator</title>
+ 
+   <style>
+    /* styling for a simple calculator*/
+
+#calContainer{
+   position:relative;
+   left:450px;
+   top: 100px;
+   border:2px solid green;
+   height:340px;
+   width:210px;
+   background:#ffffcc;
+}
+
+#scrn{
+ border:2px ridge #003366;
+ height:10%;
+ width:95%;
+ margin:5px 5px 0px 5px;
+ font-weight:bold;
+ font-size:15px;
+}
+ 
+#demarcate{
+  border:3px solid white;
+  width:100%;
+}
+ 
+.btn{
+  width:50px;
+  float:left;
+  background:#ffffff;
+  height:40px;
+  margin:2px 10px 2px 10px;
+  border:2px ridge #333399;
+  border-radius:5px;
+  padding:10px;
+  border-shadow:2px 5px 10px 
+  font-size:15px;
+  font-weight:bold;
+  color:#003399;
+  text-align:center;
+  font-family:"Times New Roman" , Times; 
+}
+.sp{
+ color:#ff0000;
+}
+
+   </style> 
+
+
+ </head>
+  
+ <body>
+    
+ <div id='calContainer'> 
+   <input type='text' id='scrn' placeHolder='0.'>
+   <hr id='demarcate'/>
+    <button class='btn one'>7</button>
+    <button class='btn two'>8</button>
+    <button class='btn 3'>9</button>
+    <button class='btn 4'>4</button>
+    <button class='btn 5'>5</button>
+    <button class='btn 6'>6</button>
+    <button class='btn 7'>1</button>
+    <button class='btn 8'>2</button>
+    <button class='btn 9'>3</button>
+    <button class='btn 10'>0</button>
+    <button class='btn 11'>.</button>
+    <button class='btn 12'>/</button>
+    <button class='btn 13'>+</button>
+    <button class='btn 14'>-</button>
+    <button class='btn 15'>*</button>
+    <button class='btn 16'>1/x</button>
+    <button class='btn 17'>C</button>
+    <button class='btn 18'>=</button>
+    <button class='btn 18'>bkp</button>
+  </div>
+  <script>
+     console.log('robot connected');
+     //get the scrn and the container
+	var dis=document.getElementById('scrn');
+	var con= document.getElementById('calContainer');
+
+     // display function using event
+     con.addEventListener('click', function(event){
+       if(event.target.textContent == '1/x'){
+          var cah= dis.value;
+          var res= `1/ (${cah})`;
+          dis.value=res;
+       }else if(event.target.textContent ==  '='){
+          var result= eval(dis.value);
+          dis.value=result;
+      }else if(event.target.nodeName==="BUTTON"){
+         dis.value+=event.target.textContent;
+      }
+      if(event.target.textContent == 'C')dis.value=" "; 
+     
+ }, false);
+ //project started on the dec 26 2020. 
+//completed on jan 4 2021.
+//add afunctionality that clears the display one by one.
+
+</script>
+ </body>
+ </html>
